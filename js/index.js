@@ -88,3 +88,46 @@
 //     $('.js-livro').click(toggleRemovido);
 
 // })
+
+/*
+ 1ª implementação com Vue.js
+var data = {
+    livros:['Orange is the new Black - Pipier Kerman', 'A origem das Espécies - Charles Darwin'],
+    titulo: 'Livros 2'
+};
+
+new Vue({
+el:"#app",
+data:data});
+*/
+
+var data = {livros : [{titulo:'Orange is the new Black', autor:'Pier Kerman', checked:true},
+            {titulo: 'A origem das espécies',autor: 'Charles Darwin', checked:false}],
+            cabecalho:'Livros Preferidos',
+            novoLivro:'',
+            novoAutor:''
+};
+
+
+new Vue({
+    el:"#app",
+    data:data,
+    methods:
+    {
+        addLivro:function()
+        {
+            var titulo = this.novoLivro.trim();
+            var autor = this.novoAutor.trim();
+            console.log(titulo + " " + autor)
+            if (titulo && autor) {
+                this.livros.push({
+                    titulo:titulo, 
+                    autor:autor,
+                    checked:false
+                });
+                this.novoLivro = '';
+                this.novoAutor = '';
+            }
+        }
+    }
+})

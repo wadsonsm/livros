@@ -9,38 +9,61 @@
   </head>
 
   <body>
-    <div id="app" class="container">
-        <!-- <h2>{{titulo}}</h2>
+    <!--    
+         1ª implementação com Vue.js
+        <div id="app" class="container">
+        <h2>{{titulo}}</h2>
         <ul>
             <li>{{livros[0]}}</li>
             <li>{{livros[1]}}</li>
-        </ul> 
-        <ul>
-            <li v-for = "livro in livros">{{livro}}</li>
-        </ul>
-        <div class="footer">
-            <hr/>
-            <em>Modifique o título da lista:</em>
-            <input v-model="titulo"/>
-        </div> -->
+        </ul>        
+     </div> -->
 
-        <h2>{{cabecalho}}</h2>
-        <ul>
-            <li v-for = "livro in livros" v-bind:class="{'removido':livro.checked}">
-                <div class="checkbox">
-                    <label>
-                        <input class="js-livro" name="list" type="checkbox" v-model="livro.checked">
-                        <big>{{livro.titulo}}</big> - <small>{{livro.autor}}</small>                        
-                    </label>
-                </div>
-            </li>
-        </ul>
-        <div class="footer">
+     <!-- 2ª implementação Vuejs
+         <div id="app" class="container">
+         <h2>{{titulo}}</h2>
+         <ul>
+             <li>{{livros[0]}}</li>
+             <li>{{livros[1]}}</li>
+         </ul>
+         <div class="footer">
             <hr>
-            <em>Modifique o título da da lista:</em>
+            <em>Modifique o título em lista:</em>
+            <input v-model="titulo" />
+         </div>
+     </div> -->
+
+     <!-- 3ª implementação Vue.js
+          <div id="app" class="container">
+         <h2>{{cabecalho}}</h2>
+         <ul v-for="livro in livros" v-bind:class = "{'removido':livro.checked}">
+             <div class="checkbox">
+             <label>
+                 <input class="js-livro" name="list" type="checkbox" v-model="livro.checked" />
+                 <big>{{livro.titulo}}</big> - <small>{{livro.autor}}</small>
+             </label>   
+         </ul>
+         <div class="footer">
+            <hr>
+            <em>Modifique o título em lista:</em>
             <input v-model="cabecalho" />
-        </div>
-     </div>
+         </div>
+     </div> -->
+
+     <div id="app" class="container">
+        <input v-model="novoLivro" @keyup.enter = "addLivro" 
+        placeholder="Adicionar novo livro" type="text" class="form-control">
+        <input v-model="novoAutor" @keyup.enter = "addLivro"
+        placeholder="Adicionar novo autor" type="text" class="form-control"> <br>
+
+        <span class="input-group-btn">
+            <button @click = "addLivro" class="js-add btn btn-primary btn-block" type="button">Adicionar !</button>
+        </span>
+    </div>
+
+
+
+
   </body>
   
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>  
